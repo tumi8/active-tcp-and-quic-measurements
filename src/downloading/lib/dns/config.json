@@ -1,0 +1,6 @@
+{
+  "dns": {
+    "domain_file": "/root/brzoza/ma-brzoza/data/targets/europe/toplist_eu.csv",
+    "domains": []
+  }
+}

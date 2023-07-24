@@ -1,0 +1,25 @@
+{
+  "filter": {
+    "count_based": {
+      "enabled": "1",
+      "min_count": "10000",
+      "max_count": "50000"
+    },
+    "duration_based": {
+      "enabled": "0",
+      "min_flow_duration": "60"
+    },
+    "port_based": {
+      "enabled": 1,
+      "port_nr": "80,443,22"
+    },
+    "flow based": {
+      "enabled": "0",
+      "src_ip": "192.168.1.10",
+      "src_port": "10",
+      "dst_ip": "10.0.0.1",
+      "dst_port": "1234"
+    }
+  }
+}
+

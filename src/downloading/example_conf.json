@@ -1,0 +1,21 @@
+{
+   "interface":"en0",
+   "url_file":"./targets.csv",
+   "sleep_between":1.0,
+   "v4_blacklist":"./blacklists/ipv4-bl-merged.txt",
+   "v6_blacklist":"./blacklists/ipv6-bl-merged.txt",
+   "repeat_count":1,
+   "path":"./example_results", 
+   "_comment_clientcfg":"used as baseline config",
+   "client_ecn":true,  
+   "client_sack":true,  
+   "client_tfo":true,
+   "client_ws":10, 
+   "permutate_options":true,
+   "_comment_mode":"either run donwloads on all (all) permutations or selected (selected) configs",
+   "mode":"selected",
+   "configs":[[true, true, true, 14],[false, true, false, 7],[false, false, false, 1]],
+   "_comment_quic":"enable QUIC download",
+   "quic":true
+}
+

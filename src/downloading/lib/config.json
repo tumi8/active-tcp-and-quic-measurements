@@ -1,0 +1,10 @@
+{
+    "downloader": {
+        "interface": "en0",
+        "urls": [
+            "https://www.blackboard.com/sites/default/files/2021-09/Learn_Solutions_for_Government.pdf"
+        ],
+        "v4_blacklist": "./blacklists/ipv4-bl-merged.txt",
+        "v6_blacklist": "./blacklists/ipv6-bl-merged.txt"
+    }
+}
