@@ -4,8 +4,8 @@ psutil
 aioquic
 asgiref 
 dnslib
-"flask<2.2"
+flask
 httpbin
 starlette
-"werkzeug<2.1" 
+werkzeug
 wsproto
