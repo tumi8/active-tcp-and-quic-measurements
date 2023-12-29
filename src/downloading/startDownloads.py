@@ -48,9 +48,6 @@ def configure_ws(tcp_rmem, rmem_default, rmem_max):
 
 
 def configure_client_tcp_stack(ecn, sack, tfo, ws):
-    # MacOS testing
-#    print("\n DEBUG: WOULD CONFIGURE ", ecn, sack, tfo, ws)
-#    return
 
     logging.info("Configuring Server TCP Stack")
     logging.info("Explicit Congestion Notification is enabled : {}".format(ecn))
@@ -71,28 +68,39 @@ def configure_client_tcp_stack(ecn, sack, tfo, ws):
         subprocess.run("sysctl -w net.ipv4.tcp_fastopen=0", shell=True)
 
     logging.info("Window Scale : {}x".format(ws))
+
+    # no window sclaing
     if ws == 0:
         subprocess.run("sysctl -w net.ipv4.tcp_window_scaling=0", shell=True)
-        configure_ws(4096, 65535, 65535)
-    if ws == 0.5:
-        subprocess.run("sysctl -w net.ipv4.tcp_window_scaling=1", shell=True)
-        configure_ws(4096, 65535, 65535)
+
+    # window sclaing with factor 2ˆ1     
     if ws == 1:
         subprocess.run("sysctl -w net.ipv4.tcp_window_scaling=1", shell=True)
         configure_ws(4096, 131070, 131070)
+
+    # window sclaing with factor 2ˆ2     
     if ws == 2:
         subprocess.run("sysctl -w net.ipv4.tcp_window_scaling=1", shell=True)
         configure_ws(4096, 262144, 262144)
+ 
+    # window sclaing with factor 2ˆ3   
+    if ws == 3:
+        subprocess.run("sysctl -w net.ipv4.tcp_window_scaling=1", shell=True)
+        configure_ws(4096, 524288, 524288)
+    
+    # window sclaing with factor 2ˆ7
     if ws == 7:
         subprocess.run("sysctl -w net.ipv4.tcp_window_scaling=1", shell=True)
         configure_ws(4096, 8388480, 8388480)    
+
+    # window sclaing with factor 2ˆ14       
     if ws == 14:
         subprocess.run("sysctl -w net.ipv4.tcp_window_scaling=1", shell=True)
         configure_ws(4096, 1073725440, 1073725440)
+
     # used to identify warm up run 
     if ws == 1337:
         subprocess.run("sysctl -w net.ipv4.tcp_window_scaling=0", shell=True)
-        configure_ws(4096, 65535, 65535)
 
     subprocess.run("sysctl -p", shell=True)
 
